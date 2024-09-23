@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Aulas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" layout:fragment="contenido">
+    <h2>Lista de Aulas</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID Aula</th>
+            <th>Nombre Aula</th>
+            <th>Capacidad</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aula : ${aulas}">
+            <td th:text="${aula.idAula}"></td>
+            <td th:text="${aula.nombreAula}"></td>
+            <td th:text="${aula.capacidad}"></td>
+            <td>
+                <a th:href="@{/aulaEditar(idAula=${aula.idAula})}" class="btn btn-info">Editar</a>
+                <a href="/aulaEliminar/${aula.idAula}" onclick="return confirm('¿Estás seguro de que quieres eliminar esta aula?');">Eliminar</a>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <a href="/aulaNueva" class="btn btn-primary">Nueva Aula</a>
+</div>
+</body>
+</html>

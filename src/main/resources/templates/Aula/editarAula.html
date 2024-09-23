@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Aula</title>
+</head>
+<body>
+<div layout:fragment="contenido">
+    <h2>Editar Aula</h2>
+    <form th:action="@{/aulaActualizar}" th:object="${aula}" method="post">
+        <div>
+            <label>ID Aula:</label>
+            <input type="text" th:field="*{idAula}" readonly />
+        </div>
+        <div>
+            <label>Nombre Aula:</label>
+            <input type="text" th:field="*{nombreAula}" />
+        </div>
+        <div>
+            <label>Capacidad:</label>
+            <input type="number" th:field="*{capacidad}" />
+        </div>
+        <div>
+            <button type="submit">Actualizar</button>
+        </div>
+    </form>
+    <a href="/aulaListar">Cancelar</a>
+</div>
+</body>
+</html>

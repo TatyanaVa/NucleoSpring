@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/Generico/plantilla}">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Cursos</title>
+</head>
+<body>
+
+<div layout:fragment="contenido">
+    <h2>Lista de Cursos</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre del Curso</th>
+            <th>Descripción</th>
+            <th>Créditos</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="curso : ${cursos}">
+            <td th:text="${curso.idCurso}"></td>
+            <td th:text="${curso.nombreCurso}"></td>
+            <td th:text="${curso.descripcion}"></td>
+            <td th:text="${curso.creditos}"></td>
+            <td>
+                <a th:href="@{/cursoEditar/{idCurso}(idCurso=${curso.idCurso})}" class="btn btn-primary">Editar</a>
+                <a th:href="@{/cursoEliminar/{idCurso}(idCurso=${curso.idCurso})}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/cursoNueva" class="btn btn-success">Agregar Nuevo Curso</a>
+</div>
+</body>
+</html>

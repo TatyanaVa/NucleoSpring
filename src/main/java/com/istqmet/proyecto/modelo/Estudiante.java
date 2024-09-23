@@ -2,15 +2,20 @@ package com.istqmet.proyecto.modelo;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name="db.Estudiante")
 public class Estudiante implements Serializable {
     @Serial
@@ -22,7 +27,8 @@ public class Estudiante implements Serializable {
     private int idEstudiante;
     private  String nombreEstudiante;
     private String apellidoEstudiante;
-    private Date fechaNacimiento;
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
     private String correo;
 
     //Relación un estudiante varias matriculas

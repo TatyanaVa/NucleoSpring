@@ -12,6 +12,8 @@ import java.util.List;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name="db.Aula")
 public class Aula implements Serializable {
     @Serial
@@ -22,7 +24,7 @@ public class Aula implements Serializable {
 
     private int idAula;
     @Column(name="nombreAula",length = 50)
-    private String numeroAula;
+    private String nombreAula;
     private  int capacidad;
 
     @OneToMany(mappedBy ="fkMatriculaAula" )

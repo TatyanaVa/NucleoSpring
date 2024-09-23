@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/Generico/plantilla}">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Estudiantes</title>
+</head>
+<body>
+<div layout:fragment="contenido">
+    <h2>Lista de Estudiantes</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="estudiante : ${estudiantes}">
+            <td th:text="${estudiante.idEstudiante}"></td>
+            <td th:text="${estudiante.nombreEstudiante}"></td>
+            <td th:text="${estudiante.apellidoEstudiante}"></td>
+            <td th:text="${#dates.format(estudiante.fechaNacimiento, 'yyyy-MM-dd')}"></td>
+            <td th:text="${estudiante.correo}"></td>
+            <td>
+                <a th:href="@{/estudianteEditar/{idEstudiante}(idEstudiante=${estudiante.idEstudiante})}" class="btn btn-primary">Editar</a>
+                <a th:href="@{/estudianteEliminar/{idEstudiante}(idEstudiante=${estudiante.idEstudiante})}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/estudianteNuevo" class="btn btn-success">Nuevo Estudiante</a>
+</div>
+</body>
+</html>
