@@ -30,7 +30,7 @@ public class EstudianteControlador {
         return "Estudiante/nuevoEstudiante";
     }
 
-    @PostMapping("/nuevoEstudiante")
+    @PostMapping("/nuevaEstudiante")
     public String guardarEstudiante(Estudiante estudiante) {
         estudianteRepositorio.save(estudiante);
         return "redirect:/estudianteListar";
