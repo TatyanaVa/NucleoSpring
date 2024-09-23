@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/Generico/plantilla}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Listar Profesores</title>
 </head>
 <body>
-
+<div layout:fragment="contenido">
+    <h1>Lista de Profesores</h1>
+    <a href="/profesorNuevo" class="btn btn-primary">Agregar Nuevo Profesor</a>
+    <table class="table table-bordered mt-3">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Especialización</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="profesor : ${profesores}">
+            <td th:text="${profesor.idProfesor}"></td>
+            <td th:text="${profesor.nombre}"></td>
+            <td th:text="${profesor.apellido}"></td>
+            <td th:text="${profesor.correo}"></td>
+            <td th:text="${profesor.especializacion}"></td>
+            <td>
+                <a th:href="@{/profesorEditar/{id}(id=${profesor.idProfesor})}" class="btn btn-warning">Editar</a>
+                <a th:href="@{/profesorEliminar/{id}(id=${profesor.idProfesor})}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este profesor?');">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
